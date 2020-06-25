@@ -12,7 +12,7 @@ public class ConvertTableNamesToCamelcase {
 
 	public static void main(String[] args) throws Exception {
 		HikariConfig config = new HikariConfig();
-		config.setJdbcUrl("jdbc:mysql://" + args[0] + ":3306/lportal");
+		config.setJdbcUrl("jdbc:mysql://" + args[0] + ":3306/" + args[3]);
 		config.setUsername(args[1]);
 		config.setPassword(args[2]);
 		config.addDataSourceProperty("cachePrepStmts", "true");
