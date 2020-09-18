@@ -46,6 +46,7 @@
 	</dependencies>
 
 	<build>
+	   <finalName>migration-tools</finalName>
 		<plugins>
 			<plugin>
 				<groupId>com.googlecode.maven-java-formatter-plugin</groupId>
