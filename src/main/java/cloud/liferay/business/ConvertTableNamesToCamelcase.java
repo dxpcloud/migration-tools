@@ -12,7 +12,8 @@ public class ConvertTableNamesToCamelcase {
 
 	public static void main(String[] args) throws Exception {
 		HikariConfig config = new HikariConfig();
-		config.setJdbcUrl("jdbc:mysql://" + args[0] + ":3306/" + args[3]);
+		String dbName = args[3];
+		config.setJdbcUrl("jdbc:mysql://" + args[0] + ":3306/" + dbName);
 		config.setUsername(args[1]);
 		config.setPassword(args[2]);
 		config.addDataSourceProperty("cachePrepStmts", "true");
@@ -82,9 +83,9 @@ public class ConvertTableNamesToCamelcase {
 
 			builder1.append(") ");
 
-			String sql = "insert ignore into lportal." + originalTableName
+			String sql = "insert ignore into " + dbName + "." + originalTableName
 					+ builder1.toString() + " select " + builder2.toString()
-					+ " from lportal." + lowercaseTableName;
+					+ " from " + dbName + "." + lowercaseTableName;
 
 			statement = connection.createStatement();
 			rows = statement.executeUpdate(sql);
